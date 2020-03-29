@@ -11,14 +11,19 @@ class Home extends Base
     {
         return view();
     }
+    //console
+    public function console()
+    {
+        return view();
+    }
     //退出登录
-    public function loginout()
+    public function logout()
     {
         session(null);
         if (session('?admin.id')){
             $this->error('退出失败！');
         }else{
-            $this->success('退出成功！','admin/index/login');
+            $this->success('退出成功！','admin/index/Index');
         }
 
     }

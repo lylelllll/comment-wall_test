@@ -9,7 +9,7 @@ class Base extends Controller
     public function initialize()
     {
         if (!session('?admin.id')){
-            $this->redirect('admin/index/login');
+            $this->redirect('admin/index/Index');
         };
     }
 
