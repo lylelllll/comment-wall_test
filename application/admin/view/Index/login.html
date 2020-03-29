@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body id="app">
+<form id="myform">
+    <h1>便利墙后台登录入口</h1>
+    <div class="my-item">
+        <label for="username">账号</label>
+        <input type="text" id="username" name="username"><br>
+    </div>
+    <div class="my-item">
+        <label for="password">密码</label>
+        <input type="password" id="password" name="password"><br>
+    </div>
+    <div class="my-item">
+        <input type="reset" value="reset">
+        <input type="submit" value="Submit" id="login">
+    </div>
+</form>
+<footer id="footer" style="font-size: 12px;">技术支持:青年全媒体中心</footer>
+</body>
+
+<script>
+    $('#login').click(function(){
+        console.log(133);
+        $.ajax({
+            url:"{:url('admin/index/login')}",
+            method:'POST',
+            data:$('#myform').serialize(),
+            dataType:'json',
+            success:function(res){
+                console.log(res);
+            },
+            fail:function(res){
+
+            }
+        });
+    });
+
+
+
+</script>
+
+
+
+</html>
+<style>
+    #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+    }
+    .my-item{
+        margin: 10px;
+    }
+    .left{
+        text-align: left;
+    }
+    .button{
+        background-color: #4CAF50;
+        padding: 10px 20px;
+        color:white;
+        border: none;
+        font-size: 16px;
+        text-align: center;
+        text-decoration: none;
+        margin-left: 10px;
+        border-radius: 4px;
+    }
+    input{
+        border-radius: 4px;
+        padding: 7px;
+        outline-style: none;
+        border: 1px solid #ccc;
+        font-size: 17px;
+    }
+    input:focus{
+        outline:0;
+        border-color: #66afe9;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+        box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
+    }
+    #footer {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 25px;
+        background: #c4c4c4;
+        /*清除浮动元素*/
+        clear:both;
+    }
+</style>

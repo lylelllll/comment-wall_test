@@ -13,11 +13,15 @@ class Index extends Controller
             $this->redirect('admin/home/index');
         };
     }
+    public function index()
+    {
+        $this->redirect('admin/index/login');
+    }
 
     //后台登陆
     public function login()
-     {
-         if (request()->isAjax()){
+    {
+         if (request()->isPost()){
              $data = [
                  'username'=>input('post.username'),
                  'password'=>input('post.password')
@@ -30,11 +34,12 @@ class Index extends Controller
              }
          }
        return view();
-     }
+    }
 
     //注册
-    public function register(){
-        if (request()->isAjax()){
+    public function register()
+    {
+        if (request()->isPost()){
             $data = [
                 'username'=>input('post.username'),
                 'password'=>input('post.password'),
@@ -42,7 +47,7 @@ class Index extends Controller
             ];
             $result = model('Admin')->register($data);
             if($result == 1){
-                $this->success('注册成功','admin/index/login');
+                $this->success('注册成功','admin/index/Index');
             }else{
                 $this->error($result);
             }
@@ -59,12 +64,12 @@ class Index extends Controller
         ];
         $result = model('admin')->reset($data);
         if ($result == 1){
-            $this->success('密码重置成功','admin/index/login');
+            $this->success('密码重置成功','admin/index/Index');
         }else{
             $this->error($result);
         }
     }
 
-
+//这样更改？
 
 }
